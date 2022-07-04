@@ -20,15 +20,19 @@ body {
     font-family: Arial, Helvetica, sans-serif
 }
 
-header {
+
+
+.begin header {
     font-size: 30px;
     font-weight: 700;
 }
-p {
+.begin p {
     font-size: 25px;
 }
 
-.btn {
+
+
+#start-quiz{
     background-color: var(--secondary);
     color: var(--primary);
     outline: none;
@@ -37,9 +41,7 @@ p {
     border-radius: 5px;
     font-size: 20px;
     font-weight: 1000;
+    cursor: pointer;
+
 }
 
-.quiz-questions {
-    opacity: 0
-    
-}

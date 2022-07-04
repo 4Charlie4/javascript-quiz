@@ -1,8 +1,28 @@
-const questionsEl = document.querySelector(".questions");
-const buttonEl = document.querySelector("#submit-quiz");
+var beginEl = document.querySelector(".begin");
+var formEl = document.querySelector("#submit-quiz");
+var startEl = document.querySelector("#start-quiz");
 
-start_quiz () {
+var quizEl = document.querySelector("#quiz-questions");
+
+
+
+var removeEl = function() {
+
+    startEl.onclick = () => {
+    beginEl.outerHTML = "";    
+    }
     
 }
 
-buttonEl.addEventListener("submit", start_quiz());
+removeEl();
+
+
+var quizQuestionsObj = {[
+    Question: "Commonly used data types DON'T include"
+    A
+]}
+
+
+var quiz = function() {
+    
+}
