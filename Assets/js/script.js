@@ -16,13 +16,3 @@ var removeEl = function() {
 
 removeEl();
 
-
-var quizQuestionsObj = {[
-    Question: "Commonly used data types DON'T include"
-    A
-]}
-
-
-var quiz = function() {
-    
-}
