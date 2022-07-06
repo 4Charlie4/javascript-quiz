@@ -58,8 +58,25 @@ body {
     
 
 }
-.answers {
-    font-size: 22px;
 
+
+.questions-cont {
+    display: none;
+
+}
+
+
+
+.ans-btn {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 10px 0px;
+    background-color: var(--secondary);
+    color: var(--primary);
+    padding: 10px;
+    
 }
 
