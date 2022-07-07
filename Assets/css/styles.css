@@ -81,9 +81,8 @@ body {
     
 }
 
-.right-wrong {
-    border-top: 3px;
-    border-color: black;
+.right-wrong h3 {
+    border-top: 3px solid black;
 }
 
 

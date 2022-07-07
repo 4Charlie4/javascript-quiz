@@ -3,6 +3,7 @@ var formEl = document.querySelector("#submit-quiz");
 var startBtn = document.querySelector("#start-quiz");
 var questionsCont = document.querySelector(".questions-cont")
 
+//questions/answers part of quiz
 var questionEl = document.querySelector("#questions");
 var answerBtnEl = document.querySelector("#answer");
 var correctResultEl = document.querySelector(".right-wrong");
@@ -79,46 +80,54 @@ var displayQuestion = function(ansBtn) {
         //ansBtn.setAttribute("data-correct", questions[i].answers)
         ansBtn.innerText = userChoice[i];
         //check's if answer is right or wrong
-       // answerBtnEl.onclick = (e) => {
-         //   console.log(e.target.getAttribute("data-correct", questions.correct));
-        //}
+        // answerBtnEl.onclick = (e) => {
+          //  console.log(e.target.getAttribute("data-correct", questions.correct));
+       // }
         ansBtn.addEventListener("click", nextQuestion);
         answerBtnEl.appendChild(ansBtn);
     }
 }
 //moves on to the next question
 var nextQuestion = function(ansBtn) {
+
     correctAns(ansBtn);
+    //gives time for user to see if they got the answer right or not
+    setTimeout (function(){
     questionEl.innerText = "";
     answerBtnEl.innerText = "";
-    rightOrWrong.innerText = "";
+    correctResultEl.innerText = "";
     currentQues+=1;
-    displayQuestion();
-}
-
-var checkAnswer = function() {
+    displayQuestion()  
+    }, 500);
+   
     
 }
- 
+
+
+ // starts the quiz
 startBtn.onclick = () => {
     beginEl.innerHTML = "",
     questionsCont.classList.remove('questions-cont'); 
     displayQuestion();   
     }
 
-    var timer = function() {
 
-    }
 
+
+    //will let us know if answer that is chosen is correct or not.
     var correctAns = function(ansBtn) {
         var rightOrWrong = questions[currentQues].correct
-        correctResultEl.innerHTML = rightOrWrong;
-        if(ansBtn.innerText === rightOrWrong) {
+        //tests ansBtn against righOrWrong to determine whether the anwer chosen is correct.
+        if(ansBtn.target.innerHTML === rightOrWrong) {
             console.log("CORRECT");
-            var correct = document.createElement("<h3></h3>")
-            correct.className = ""
+            var correct = document.createElement("h3");
+            correct.innerText = "CORRECT!";
+            correctResultEl.appendChild(correct);
         }else {
             console.log("INCORRECT")
+            var incorrect = document.createElement("h3");
+            incorrect.innerText = "INCORRECT!";
+            correctResultEl.appendChild(incorrect);
         }
     }
 
