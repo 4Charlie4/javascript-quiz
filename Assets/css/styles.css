@@ -79,9 +79,11 @@ body {
     padding: 10px 30px;
     display: flex;
     
-   
-    
-    
+}
+
+.right-wrong {
+    border-top: 3px;
+    border-color: black;
 }
 
 

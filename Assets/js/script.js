@@ -5,10 +5,12 @@ var questionsCont = document.querySelector(".questions-cont")
 
 var questionEl = document.querySelector("#questions");
 var answerBtnEl = document.querySelector("#answer");
+var correctResultEl = document.querySelector(".right-wrong");
 
 
 var score = 0;
 var currentQues = 0;
+
 //array that will contain questions and answers
 var questions = [
     {
@@ -59,7 +61,7 @@ var questions = [
 
 
 // will display question and answers
-var displayQuestion = function() {
+var displayQuestion = function(ansBtn) {
     //assigns current question to userQuestion
     var userQuestion = questions[currentQues].question
     // places current question into the HTML
@@ -74,7 +76,7 @@ var displayQuestion = function() {
         var ansBtn = document.createElement("button");
         //assigns a class game
         ansBtn.className = "ans-btn";
-        ansBtn.setAttribute("data-correct", questions[i].correct)
+        //ansBtn.setAttribute("data-correct", questions[i].answers)
         ansBtn.innerText = userChoice[i];
         //check's if answer is right or wrong
        // answerBtnEl.onclick = (e) => {
@@ -82,18 +84,14 @@ var displayQuestion = function() {
         //}
         ansBtn.addEventListener("click", nextQuestion);
         answerBtnEl.appendChild(ansBtn);
-    
     }
 }
 //moves on to the next question
-var nextQuestion = function() {
-    if (answerBtnEl == questions[currentQues].correct) {
-        console.log("CORRECT");
-    }else {
-        console.log("INCORRECT");
-    };
+var nextQuestion = function(ansBtn) {
+    correctAns(ansBtn);
     questionEl.innerText = "";
     answerBtnEl.innerText = "";
+    rightOrWrong.innerText = "";
     currentQues+=1;
     displayQuestion();
 }
@@ -106,6 +104,19 @@ startBtn.onclick = () => {
     beginEl.innerHTML = "",
     questionsCont.classList.remove('questions-cont'); 
     displayQuestion();   
+    }
+
+    var timer = function() {
+
+    }
+
+    var correctAns = function(ansBtn) {
+        var rightOrWrong = questions[currentQues].correct
+        if(ansBtn.innerText === rightOrWrong) {
+            console.log("CORRECT");
+        }else {
+            console.log("INCORRECT")
+        }
     }
 
 
