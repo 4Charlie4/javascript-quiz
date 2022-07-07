@@ -12,35 +12,73 @@ var currentQues = 0;
 //array that will contain questions and answers
 var questions = [
     {
-        question: "What is 2+2",
-        answers: ["1","2","4","3"],
-        correct: "4"
+        question: "JavaScript is the same as Java ",
+        answers: ["True","False","They can be used interchangeably"],
+        correct: "False"
     },
     {
-        question: "What is 3+3",
-        answers: ["2", "6", "9", "12"],
-        correct: "6"
+        question: "How do you add a comment in JavaScript?",
+        answers: ["<!---->", "//", "()", "[]"],
+        correct: "//"
+    },
+    {
+        question: "What is the correct way to write an array?",
+        answers: ["var money = [1, 3, 4 ]", "function array()", "var array = 1, 3, 4", "var = array"],
+        correct: "var money = [1, 3, 4]"
+    },
+    {
+        question: "How do you declare a variable?",
+        answers: ["var = stuff", "v myName", "v = myName", "var stuff = 'myName'"],
+        correct: "var stuff = 'myName'"
+    },
+    {
+        question: "Which operator is used to assign a value to a variable?",
+        answers: ["+", "||", "=", "&&"],
+        correct: "="
+    },
+    {
+        question: "In JavaScript what does '!' mean?",
+        answers: ["NOT", "IS", "IF", "WRONG" ],
+        correct: "NOT"
+    },
+    {
+        question: "What does === mean?",
+        answers: ["equal to in type AND value", "equal to value only", "is assigned to", "It does not mean anything"],
+        correct: "equal to in type AND value"
+    },
+    {
+        question: "You should always Pseudocode before starting to code?",
+        answers: ["TRUE", "FALSE"],
+        correct: "TRUE"
     }
+        
+        
+    
+
 ]
 
 
 // will display question and answers
 var displayQuestion = function() {
+    //assigns current question to userQuestion
     var userQuestion = questions[currentQues].question
+    // places current question into the HTML
      questionEl.innerText = userQuestion;
         
-    
+    //userChoice is being assigned answers from the array starting at index 0
     var userChoice = questions[currentQues].answers;
-     //for loop to display all answers for a question
+     //for loop to display all answers for a question in a given question.
     for(var i=0; i<userChoice.length; i++) {
-        console.log(userChoice[i]);
+       // console.log(userChoice[i]);
+        //creates the buttons for the answers
         var ansBtn = document.createElement("button");
+        //assigns a class game
         ansBtn.className = "ans-btn";
-        ansBtn.setAttribute("data-correct", userChoice[i].correct)
+        ansBtn.setAttribute("data-correct", questions[i].correct)
         ansBtn.innerText = userChoice[i];
         //check's if answer is right or wrong
-        //answerBtnEl.onclick = (e) => {
-        //    console.log(e.target.getAttribute("correct"));
+       // answerBtnEl.onclick = (e) => {
+         //   console.log(e.target.getAttribute("data-correct", questions.correct));
         //}
         ansBtn.addEventListener("click", nextQuestion);
         answerBtnEl.appendChild(ansBtn);
@@ -49,10 +87,19 @@ var displayQuestion = function() {
 }
 //moves on to the next question
 var nextQuestion = function() {
+    if (answerBtnEl == questions[currentQues].correct) {
+        console.log("CORRECT");
+    }else {
+        console.log("INCORRECT");
+    };
     questionEl.innerText = "";
     answerBtnEl.innerText = "";
     currentQues+=1;
     displayQuestion();
+}
+
+var checkAnswer = function() {
+    
 }
  
 startBtn.onclick = () => {

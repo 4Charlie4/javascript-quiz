@@ -73,11 +73,16 @@ body {
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
-    margin: 0px 10px;
+    margin: 10px 10px;
     background-color: var(--secondary);
     color: var(--primary);
     padding: 10px 30px;
+    display: flex;
+    
+   
     
     
 }
+
+
 
