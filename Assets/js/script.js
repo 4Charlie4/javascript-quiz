@@ -8,81 +8,58 @@ var answerBtnEl = document.querySelector("#answer");
 
 
 var score = 0;
+var currentQues = 0;
 //array that will contain questions and answers
-var questionsArry = [
+var questions = [
     {
         question: "What is 2+2",
-        answers: [ 
-            {ans: "1", correct: false},
-            {ans: "2", correct: false},
-            {ans: "4", correct: true}
-
-        ]
+        answers: ["1","2","4","3"],
+        correct: "4"
     },
     {
         question: "What is 3+3",
-        answers: [
-            {ans: "3"},
-            {ans: "6"},
-            {ans: "4"}
-        ]
+        answers: ["2", "6", "9", "12"],
+        correct: "6"
     }
 ]
 
 
 // will display question and answers
 var displayQuestion = function() {
-
-    //assign questions in question array to new var
-    var question = questionsArry[0].question
-    console.log(question);
-    //display question in HTMl
-    questionEl.innerHTML = question;
-
+    var userQuestion = questions[currentQues].question
+     questionEl.innerText = userQuestion;
+        
     
-
-    var answers = questionsArry[0].answers
-    
+    var userChoice = questions[currentQues].answers;
      //for loop to display all answers for a question
-    for(i=0; i<answers.length; i++) {
-        console.log(answers[i]);
+    for(var i=0; i<userChoice.length; i++) {
+        console.log(userChoice[i]);
         var ansBtn = document.createElement("button");
         ansBtn.className = "ans-btn";
-        ansBtn.setAttribute("correct", answers[i].correct)
-        ansBtn.innerText = answers[i].ans
+        ansBtn.setAttribute("data-correct", userChoice[i].correct)
+        ansBtn.innerText = userChoice[i];
         //check's if answer is right or wrong
-        answerBtnEl.onclick = (e) => {
-            console.log(e.target.getAttribute("correct"));
-        }
-    
+        //answerBtnEl.onclick = (e) => {
+        //    console.log(e.target.getAttribute("correct"));
+        //}
+        ansBtn.addEventListener("click", nextQuestion);
         answerBtnEl.appendChild(ansBtn);
-        
+    
     }
-    // supposed to remove question and answer and then replace with new one
-    answerBtnEl.addEventListener("click", nextQuestion);
 }
-
- var nextQuestion = function(question) {
-    
-    
-    for(i=0; i<question.length; i++) {
-        console.log(question[i]);
-        question.innerHTML = question;
-
-    }
- }
-
-var startQuiz = function() {
-//removes beginning form and starts game
-    startBtn.onclick = () => {
-    beginEl.innerHTML = "",
-    questionsCont.classList.remove('questions-cont');    
-    }
+//moves on to the next question
+var nextQuestion = function() {
+    questionEl.innerText = "";
+    answerBtnEl.innerText = "";
+    currentQues+=1;
     displayQuestion();
-    
 }
-
-startQuiz();
+ 
+startBtn.onclick = () => {
+    beginEl.innerHTML = "",
+    questionsCont.classList.remove('questions-cont'); 
+    displayQuestion();   
+    }
 
 
 
