@@ -60,10 +60,7 @@ body {
 }
 
 
-.questions-cont {
-    display: none;
 
-}
 
 
 
@@ -81,9 +78,19 @@ body {
     
 }
 
+
 .right-wrong h3 {
     border-top: 3px solid black;
 }
 
+.timer-sec {
+    position: relative;
+    left: 100%;
+    
+}
 
+.questions-cont {
+    display: none;
+
+}
 

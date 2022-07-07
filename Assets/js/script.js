@@ -97,11 +97,13 @@ var nextQuestion = function(ansBtn) {
     answerBtnEl.innerText = "";
     correctResultEl.innerText = "";
     currentQues+=1;
-    displayQuestion()  
+    if (currentQues <=6) {
+    displayQuestion()
+    }  
     }, 500);
-   
     
-}
+    }   
+    
 
 
  // starts the quiz
@@ -117,20 +119,23 @@ startBtn.onclick = () => {
     //will let us know if answer that is chosen is correct or not.
     var correctAns = function(ansBtn) {
         var rightOrWrong = questions[currentQues].correct
-        //tests ansBtn against righOrWrong to determine whether the anwer chosen is correct.
+        //tests ansBtn against rightOrWrong to determine whether the anwer chosen is correct.
         if(ansBtn.target.innerHTML === rightOrWrong) {
             console.log("CORRECT");
             var correct = document.createElement("h3");
             correct.innerText = "CORRECT!";
             correctResultEl.appendChild(correct);
+            score+=10
         }else {
             console.log("INCORRECT")
             var incorrect = document.createElement("h3");
             incorrect.innerText = "INCORRECT!";
             correctResultEl.appendChild(incorrect);
+            score-=5
         }
     }
 
+    
 
 
 
