@@ -112,8 +112,11 @@ startBtn.onclick = () => {
 
     var correctAns = function(ansBtn) {
         var rightOrWrong = questions[currentQues].correct
+        correctResultEl.innerHTML = rightOrWrong;
         if(ansBtn.innerText === rightOrWrong) {
             console.log("CORRECT");
+            var correct = document.createElement("<h3></h3>")
+            correct.className = ""
         }else {
             console.log("INCORRECT")
         }
