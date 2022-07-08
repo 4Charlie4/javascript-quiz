@@ -9,6 +9,8 @@ var answerBtnEl = document.querySelector("#answer");
 var correctResultEl = document.querySelector(".right-wrong");
 var resultsCont = document.querySelector("#results-cont");
 
+var timerCont = document.querySelector(".timer-sec");
+
 var score = 0;
 var currentQues = 0;
 
@@ -26,7 +28,7 @@ var questions = [
     },
     {
         question: "What is the correct way to write an array?",
-        answers: ["var money = [1, 3, 4 ]", "function array()", "var array = 1, 3, 4", "var = array"],
+        answers: ["var money = [1, 3, 4]", "function array()", "var array = 1, 3, 4", "var = array"],
         correct: "var money = [1, 3, 4]"
     },
     {
@@ -97,7 +99,9 @@ var nextQuestion = function(ansBtn) {
     answerBtnEl.innerText = "";
     correctResultEl.innerText = "";
     currentQues+=1;
-    if (currentQues <=6) {
+
+    //this can be refactored in the future
+    if (currentQues <=7) {
     displayQuestion()
     }  else {
         //removes hide class to show results
@@ -132,12 +136,6 @@ var nextQuestion = function(ansBtn) {
     
 
 
- // starts the quiz
-startBtn.onclick = () => {
-    beginEl.innerHTML = "",
-    questionsCont.classList.remove('questions-cont'); 
-    displayQuestion();   
-    }
 
 
 
@@ -163,12 +161,33 @@ startBtn.onclick = () => {
     }
 
     
-
+//bug in here
     var timer = function() {
+        var count = 60;
+        var quizTimer = setInterval( function(){
+        timerCont.innerText = count + " seconds left";
+        count-=1
+
+        if (count <= 0) {
+         clearInterval(quizTimer);
+         timerCont.innerText = "Time's up!";   
+        } else if(currentQues === 8){
+            timerCont.innerText = "You Finished!";
+        }
+        
+
+        }, 1000)
 
     }
 
     
+ // starts the quiz
+startBtn.onclick = () => {
+    beginEl.innerHTML = "",
+    questionsCont.classList.remove('questions-cont'); 
+    displayQuestion();
+    timer();   
+    }
 
 
 
