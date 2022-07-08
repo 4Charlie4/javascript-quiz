@@ -104,6 +104,15 @@ var nextQuestion = function(ansBtn) {
     if (currentQues <=7) {
     displayQuestion()
     }  else {
+       resultsPage();
+    
+    }   
+}, 300);
+
+}
+    // populates result page
+    var resultsPage = function() {
+
         //removes hide class to show results
         resultsCont.classList.remove('hide');
         //score will display on screen and store 
@@ -129,16 +138,15 @@ var nextQuestion = function(ansBtn) {
         resultsCont.appendChild(highScoreEl);
         console.log(highScore);
         
-    }
-    }, 300);
+        }
+       
     
-    }   
     
 
 
 
 
-
+var count = 60;
 
     //will let us know if answer that is chosen is correct or not.
     var correctAns = function(ansBtn) {
@@ -156,6 +164,7 @@ var nextQuestion = function(ansBtn) {
             incorrect.innerText = "INCORRECT!";
             correctResultEl.appendChild(incorrect);
             score-=3
+            count-=10
         }
         
     }
@@ -163,14 +172,15 @@ var nextQuestion = function(ansBtn) {
     
 //bug in here
     var timer = function() {
-        var count = 60;
+        
         var quizTimer = setInterval( function(){
         timerCont.innerText = count + " seconds left";
         count-=1
 
         if (count <= 0) {
          clearInterval(quizTimer);
-         timerCont.innerText = "Time's up!";   
+         timerCont.innerText = "Time's up!";
+           
         } else if(currentQues === 8){
             timerCont.innerText = "You Finished!";
         }
