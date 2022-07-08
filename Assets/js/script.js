@@ -7,7 +7,7 @@ var questionsCont = document.querySelector(".questions-cont")
 var questionEl = document.querySelector("#questions");
 var answerBtnEl = document.querySelector("#answer");
 var correctResultEl = document.querySelector(".right-wrong");
-
+var resultsCont = document.querySelector("#results-cont");
 
 var score = 0;
 var currentQues = 0;
@@ -99,8 +99,34 @@ var nextQuestion = function(ansBtn) {
     currentQues+=1;
     if (currentQues <=6) {
     displayQuestion()
-    }  
-    }, 500);
+    }  else {
+        //removes hide class to show results
+        resultsCont.classList.remove('hide');
+        //score will display on screen and store 
+        var scoreEl = document.createElement("h3");
+        scoreEl.innerText = score + " is the Score."
+        resultsCont.appendChild(scoreEl);
+        console.log(score);
+
+        
+        //creates storage for the highscore
+        var highScore = localStorage.getItem("HighScore");
+        if (highScore === null) {
+            highScore = 0;
+        }
+        if (score > highScore) {
+            localStorage.setItem("HighScore", score);
+                alert("You now have the new HighScore!");
+
+        }
+        //creates element to display highScore
+        var highScoreEl = document.createElement("h3");
+        highScoreEl.innerText = highScore + " is the HighScore";
+        resultsCont.appendChild(highScoreEl);
+        console.log(highScore);
+        
+    }
+    }, 300);
     
     }   
     
@@ -119,20 +145,27 @@ startBtn.onclick = () => {
     //will let us know if answer that is chosen is correct or not.
     var correctAns = function(ansBtn) {
         var rightOrWrong = questions[currentQues].correct
-        //tests ansBtn against rightOrWrong to determine whether the anwer chosen is correct.
+        //tests ansBtn against rightOrWrong to determine whether the answer chosen is correct.
         if(ansBtn.target.innerHTML === rightOrWrong) {
             console.log("CORRECT");
             var correct = document.createElement("h3");
             correct.innerText = "CORRECT!";
             correctResultEl.appendChild(correct);
-            score+=10
+            score+=7
         }else {
             console.log("INCORRECT")
             var incorrect = document.createElement("h3");
             incorrect.innerText = "INCORRECT!";
             correctResultEl.appendChild(incorrect);
-            score-=5
+            score-=3
         }
+        
+    }
+
+    
+
+    var timer = function() {
+
     }
 
     

@@ -46,7 +46,7 @@ body {
     cursor: pointer;
 
 }
-.quiz-section {
+.quiz-section, .results-section{
    display: flex;
    flex-wrap: wrap;
    flex-direction: column;
@@ -92,5 +92,13 @@ body {
 .questions-cont {
     display: none;
 
+}
+
+#results-cont h3 {
+    font-size: 30px;
+}
+
+.hide {
+    display: none;
 }
 
